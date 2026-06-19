@@ -1,0 +1,118 @@
+@import '@fontsource/geist/400.css';
+@import '@fontsource/geist/500.css';
+@import '@fontsource/geist/600.css';
+@import '@fontsource/geist-mono/400.css';
+@import '@fontsource/geist-mono/500.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: dark;
+  }
+
+  html,
+  body,
+  #root {
+    height: 100%;
+  }
+
+  body {
+    @apply bg-surface-900 text-surface-50 font-sans antialiased;
+    font-feature-settings: 'cv11', 'ss01';
+  }
+
+  /* Monospace for IDs, codes, metrics, timestamps */
+  .data,
+  code,
+  kbd {
+    @apply font-mono;
+  }
+
+  ::selection {
+    @apply bg-ice-500/30 text-white;
+  }
+
+  /* Scrollbars */
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    @apply bg-transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    @apply bg-surface-muted rounded;
+    border: 2px solid transparent;
+    background-clip: content-box;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-surface-500;
+    background-clip: content-box;
+  }
+}
+
+@layer components {
+  .card {
+    @apply bg-surface-700 border border-surface-border rounded-lg;
+  }
+
+  .card-elevated {
+    @apply bg-surface-500 border border-surface-border rounded-lg;
+  }
+
+  .input {
+    @apply w-full bg-surface-800 border border-surface-border rounded px-3 py-2 text-sm
+           text-surface-50 placeholder:text-surface-muted
+           focus:border-ice-500 focus:ring-1 focus:ring-ice-500/40 focus:outline-none
+           transition-colors;
+  }
+
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded px-3.5 py-2 text-sm font-medium
+           transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-ice-500/50
+           disabled:opacity-50 disabled:pointer-events-none;
+  }
+
+  .btn-primary {
+    @apply btn bg-ice-500 text-surface-900 hover:bg-ice-400;
+  }
+
+  .btn-ghost {
+    @apply btn bg-transparent text-surface-100 hover:bg-surface-600;
+  }
+
+  .btn-outline {
+    @apply btn border border-surface-border text-surface-100 hover:bg-surface-600;
+  }
+
+  /* Shimmering loading skeleton */
+  .skeleton {
+    @apply rounded;
+    background-image: linear-gradient(
+      90deg,
+      theme('colors.surface.700') 25%,
+      theme('colors.surface.600') 50%,
+      theme('colors.surface.700') 75%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 1.5s ease-in-out infinite;
+  }
+
+  /* The signature flow rail */
+  .flow-rail {
+    @apply h-0.5 w-full overflow-hidden;
+    background-image: linear-gradient(
+      90deg,
+      transparent 0%,
+      theme('colors.ice.500') 25%,
+      theme('colors.ai.500') 50%,
+      theme('colors.ice.500') 75%,
+      transparent 100%
+    );
+    background-size: 200% 100%;
+    @apply animate-flow-rail;
+  }
+}

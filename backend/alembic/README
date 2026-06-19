@@ -1,0 +1,9 @@
+Async Alembic environment for DocuFlow.
+
+Common commands (run from the backend/ directory):
+
+  alembic upgrade head          # apply all migrations
+  alembic downgrade -1          # roll back one migration
+  alembic revision --autogenerate -m "message"   # create a new migration
+
+The database URL is read from app settings (DATABASE_URL) at runtime.
